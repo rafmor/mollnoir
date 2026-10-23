@@ -1,12 +1,528 @@
 <!DOCTYPE html>
-<html>
+<html lang="es" class="scroll-smooth">
 <head>
-  <title>Moll Noir</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moll Noir | Soul Cover Band - Press Kit</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Configuración personalizada de Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        soul: {
+                            50: '#fbf9f2',
+                            100: '#f6f0df',
+                            200: '#ebe1bf',
+                            300: '#e6c762',
+                            400: '#dfb949',
+                            500: '#d4af37', /* Dorado principal (#D4AF37) */
+                            600: '#b89326',
+                            700: '#96751c',
+                            800: '#7a5f1a',
+                            900: '#634e19',
+                            950: '#382a0b',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Estilos base */
+        body {
+            background-color: #111111;
+            color: #f3f4f6;
+        }
+        
+        /* Personalización de los reproductores de audio para que encajen mejor en el tema oscuro */
+        audio {
+            width: 100%;
+            height: 40px;
+            outline: none;
+        }
+        audio::-webkit-media-controls-panel {
+            background-color: #262626;
+        }
+        audio::-webkit-media-controls-play-button,
+        audio::-webkit-media-controls-mute-button {
+            background-color: #d4af37;
+            border-radius: 50%;
+        }
+        audio::-webkit-media-controls-current-time-display,
+        audio::-webkit-media-controls-time-remaining-display {
+            color: #fff;
+        }
+    </style>
 </head>
-<body>
+<body class="antialiased font-sans">
 
-<h1>Hola Mundo!</h1>
-<p>parrafo</p>
+    <!-- Navegación -->
+    <header class="fixed w-full top-0 z-50 transition-all duration-300 bg-black/90 backdrop-blur-sm border-b border-white/10" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#" class="font-serif text-2xl font-bold text-white tracking-wider uppercase">
+                        Moll <span class="text-soul-500">Noir</span>
+                    </a>
+                </div>
+                
+                <!-- Menú Desktop -->
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <a href="#biografia" class="text-gray-300 hover:text-soul-400 px-3 py-2 text-sm font-medium transition-colors">Biografía</a>
+                    <a href="#video" class="text-gray-300 hover:text-soul-400 px-3 py-2 text-sm font-medium transition-colors">Directo</a>
+                    <a href="#musica" class="text-gray-300 hover:text-soul-400 px-3 py-2 text-sm font-medium transition-colors">Música</a>
+                    <a href="#galeria" class="text-gray-300 hover:text-soul-400 px-3 py-2 text-sm font-medium transition-colors">Galería</a>
+                    <a href="#conciertos" class="text-gray-300 hover:text-soul-400 px-3 py-2 text-sm font-medium transition-colors">Tour</a>
+                    <a href="#contratacion" class="bg-soul-500 hover:bg-soul-400 text-black px-5 py-2 rounded-full text-sm font-bold transition-colors shadow-lg shadow-soul-900/50">Contratación</a>
+                </nav>
 
+                <!-- Botón Menú Móvil -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black border-b border-white/10">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#biografia" class="mobile-link block px-3 py-2 text-base font-medium text-gray-300 hover:text-soul-400">Biografía</a>
+                <a href="#video" class="mobile-link block px-3 py-2 text-base font-medium text-gray-300 hover:text-soul-400">Directo</a>
+                <a href="#musica" class="mobile-link block px-3 py-2 text-base font-medium text-gray-300 hover:text-soul-400">Música</a>
+                <a href="#galeria" class="mobile-link block px-3 py-2 text-base font-medium text-gray-300 hover:text-soul-400">Galería</a>
+                <a href="#conciertos" class="mobile-link block px-3 py-2 text-base font-medium text-gray-300 hover:text-soul-400">Tour</a>
+                <a href="#contratacion" class="mobile-link block px-3 py-2 mt-4 text-base font-bold text-black bg-soul-500 rounded-md text-center">Contratación</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. Hero Section -->
+    <section class="relative h-screen flex items-center justify-center">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Moll Noir Live" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-[#111111]"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20">
+            <h2 class="text-soul-500 font-medium tracking-[0.2em] uppercase text-sm md:text-base mb-4">Electronic Press Kit</h2>
+            <h1 class="font-serif text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
+                Moll <span class="italic text-soul-500">Noir</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 font-light mb-10 max-w-2xl mx-auto">
+                La elegancia y la fuerza del Soul clásico, revivido con un toque contemporáneo inconfundible.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#contratacion" class="px-8 py-4 bg-soul-500 hover:bg-soul-400 text-black rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(212,175,55,0.4)]">
+                    Solicitar Contratación
+                </a>
+                <a href="#video" class="px-8 py-4 bg-white/5 hover:bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-full font-medium text-lg transition-all">
+                    Ver en Directo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Biografía -->
+    <section id="biografia" class="py-24 bg-[#111111] relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-4">La Banda</h2>
+                <div class="w-24 h-1 bg-soul-500 mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="max-w-3xl mx-auto text-center mb-20 text-gray-400 text-lg leading-relaxed font-light">
+                <p>
+                    <strong class="text-white font-medium">Moll Noir</strong> es una banda de versiones nacida de la pasión compartida por los grandes clásicos del Soul, R&B y Motown. Con una puesta en escena elegante y un sonido arrollador, la banda reinterpreta himnos de leyendas como Aretha Franklin, Stevie Wonder o Marvin Gaye, infundiéndoles una energía fresca y sofisticada ideal para eventos exclusivos, festivales y salas de conciertos.
+                </p>
+            </div>
+
+            <!-- Miembros de la banda -->
+<div class="flex flex-wrap justify-center gap-12 mt-16 text-center">
+    
+    <!-- Izabela -->
+    <div class="w-full sm:w-auto flex flex-col items-center">
+        <div class="w-64 h-64 rounded-full overflow-hidden mb-4 border-4 border-noir-500 shadow-xl shadow-noir-500/20">
+            <img src="https://images.unsplash.com/photo-1516280440502-6c56d7870e28?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Izabela - Voz" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500">
+        </div>
+        <h4 class="text-xl font-bold font-serif">Izabela</h4>
+        <p class="text-noir-500 font-bold uppercase tracking-widest text-sm">Voz</p>
+    </div>
+
+    <!-- Agus -->
+    <div class="w-full sm:w-auto flex flex-col items-center">
+        <div class="w-64 h-64 rounded-full overflow-hidden mb-4 border-4 border-zinc-800 shadow-xl">
+            <img src="https://images.unsplash.com/photo-1549887552-cb1071d3e5ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Agus - Guitarra" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500">
+        </div>
+        <h4 class="text-xl font-bold font-serif">Agus</h4>
+        <p class="text-zinc-400 font-bold uppercase tracking-widest text-sm">Guitarra</p>
+    </div>
+
+    <!-- Leo -->
+    <div class="w-full sm:w-auto flex flex-col items-center">
+        <div class="w-64 h-64 rounded-full overflow-hidden mb-4 border-4 border-zinc-800 shadow-xl">
+            <img src="https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Leo - Batería" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500">
+        </div>
+        <h4 class="text-xl font-bold font-serif">Leo</h4>
+        <p class="text-zinc-400 font-bold uppercase tracking-widest text-sm">Batería</p>
+    </div>
+
+    <!-- Diego -->
+    <div class="w-full sm:w-auto flex flex-col items-center">
+        <div class="w-64 h-64 rounded-full overflow-hidden mb-4 border-4 border-zinc-800 shadow-xl">
+            <img src="https://images.unsplash.com/photo-1573871666457-7c7329118cf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Diego - Saxo y Teclados" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500">
+        </div>
+        <h4 class="text-xl font-bold font-serif">Diego</h4>
+        <p class="text-zinc-400 font-bold uppercase tracking-widest text-sm">Saxo y Teclados</p>
+    </div>
+
+    <!-- Rafa -->
+    <div class="w-full sm:w-auto flex flex-col items-center">
+        <div class="w-64 h-64 rounded-full overflow-hidden mb-4 border-4 border-zinc-800 shadow-xl">
+            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Rafa - Bajo" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500">
+        </div>
+        <h4 class="text-xl font-bold font-serif">Rafa</h4>
+        <p class="text-zinc-400 font-bold uppercase tracking-widest text-sm">Bajo</p>
+    </div>
+
+</div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Video en Directo (YouTube Iframe corregido) -->
+    <section id="video" class="py-24 bg-neutral-900 border-y border-white/5">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-serif text-4xl font-bold text-white mb-4">Experiencia en Directo</h2>
+                <p class="text-gray-400">La energía de Moll Noir sobre el escenario.</p>
+            </div>
+            
+            <div class="relative w-full rounded-xl overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.8)] border border-white/10 bg-black">
+                <!-- Iframe exacto proporcionado y adaptado al diseño -->
+                <iframe 
+                    class="w-full aspect-video" 
+                    src="https://www.youtube.com/embed/jfKfPfyJRdk" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Galería de Fotos (8 fotos en grid) -->
+    <section id="galeria" class="py-24 bg-[#111111]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 gap-6 text-center md:text-left">
+                <div>
+                    <h2 class="font-serif text-4xl font-bold text-white mb-2">Galería Promocional</h2>
+                    <p class="text-gray-400">Material gráfico para prensa, redes y cartelería.</p>
+                </div>
+                <a href="#" class="inline-flex items-center justify-center px-6 py-3 bg-soul-500/10 hover:bg-soul-500/20 border border-soul-500/50 rounded-lg text-sm text-soul-500 font-bold transition-all">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    Descargar fotos en Alta Resolución (ZIP)
+                </a>
+            </div>
+
+            <!-- Grid de 8 fotos -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="aspect-square rounded-lg overflow-hidden bg-neutral-800 relative group">
+                    <img src="https://images.unsplash.com/photo-1501612780327-45045538702b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Foto Banda 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="aspect-square rounded-lg overflow-hidden bg-neutral-800 relative group">
+                    <img src="https://images.unsplash.com/photo-1493225457124-a1a2a47291a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Foto Banda 2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="aspect-square rounded-lg overflow-hidden bg-neutral-800 relative group">
+                    <img src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Foto Banda 3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="aspect-square rounded-lg overflow-hidden bg-neutral-800 relative group">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Foto Banda 4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="aspect-square rounded-lg overflow-hidden bg-neutral-800 relative group">
+                    <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Foto Banda 5" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="aspect-square rounded-lg overflow-hidden bg-neutral-800 relative group">
+                    <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Foto Banda 6" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="aspect-square rounded-lg overflow-hidden bg-neutral-800 relative group">
+                    <img src="https://images.unsplash.com/photo-1471478330526-52c610018c71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Foto Banda 7" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="aspect-square rounded-lg overflow-hidden bg-neutral-800 relative group">
+                    <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Foto Banda 8" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Audios -->
+    <section id="musica" class="py-24 bg-neutral-900 border-t border-white/5">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-serif text-4xl font-bold text-white mb-4">Repertorio (Studio)</h2>
+                <p class="text-gray-400">Escucha algunas de nuestras versiones destacadas.</p>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Track 1 -->
+                <div class="bg-black/50 p-6 rounded-2xl border border-neutral-800 flex flex-col md:flex-row items-center gap-6 shadow-lg">
+                    <div class="w-16 h-16 bg-neutral-900 rounded-full flex items-center justify-center flex-shrink-0 text-soul-500 border border-soul-500/30">
+                        <svg class="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <div class="flex-grow w-full">
+                        <h4 class="text-lg font-bold text-white mb-1">I Feel Good <span class="text-sm font-normal text-gray-500">(James Brown Cover)</span></h4>
+                        <audio controls preload="none">
+                            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                </div>
+
+                <!-- Track 2 -->
+                <div class="bg-black/50 p-6 rounded-2xl border border-neutral-800 flex flex-col md:flex-row items-center gap-6 shadow-lg">
+                    <div class="w-16 h-16 bg-neutral-900 rounded-full flex items-center justify-center flex-shrink-0 text-soul-500 border border-soul-500/30">
+                        <svg class="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <div class="flex-grow w-full">
+                        <h4 class="text-lg font-bold text-white mb-1">Respect <span class="text-sm font-normal text-gray-500">(Aretha Franklin Cover)</span></h4>
+                        <audio controls preload="none">
+                            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                </div>
+
+                <!-- Track 3 -->
+                <div class="bg-black/50 p-6 rounded-2xl border border-neutral-800 flex flex-col md:flex-row items-center gap-6 shadow-lg">
+                    <div class="w-16 h-16 bg-neutral-900 rounded-full flex items-center justify-center flex-shrink-0 text-soul-500 border border-soul-500/30">
+                        <svg class="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <div class="flex-grow w-full">
+                        <h4 class="text-lg font-bold text-white mb-1">Superstition <span class="text-sm font-normal text-gray-500">(Stevie Wonder Cover)</span></h4>
+                        <audio controls preload="none">
+                            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Próximos Conciertos (Tabla Dinámica con TXT) -->
+    <section id="conciertos" class="py-24 bg-[#111111] border-t border-white/5">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-serif text-4xl font-bold text-white mb-4">Gira y Eventos</h2>
+                <div class="w-24 h-1 bg-soul-500 mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-400 text-sm">Esta tabla se actualiza automáticamente leyendo "tour.txt"</p>
+            </div>
+
+            <div class="overflow-x-auto rounded-xl border border-neutral-800 shadow-2xl">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-neutral-900 text-gray-400 text-sm uppercase tracking-wider">
+                            <th class="py-4 px-6 font-medium">Fecha</th>
+                            <th class="py-4 px-6 font-medium">Sala / Evento</th>
+                            <th class="py-4 px-6 font-medium">Ciudad</th>
+                            <th class="py-4 px-6 font-medium text-right">Entradas</th>
+                        </tr>
+                    </thead>
+                    <!-- Aquí se inyectarán las filas desde el script -->
+                    <tbody id="tour-dates-body" class="bg-black/50 divide-y divide-neutral-800">
+                        <!-- El script llenará esto o pondrá el mensaje de error -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Contratación / Booking -->
+    <section id="contratacion" class="py-24 bg-neutral-900 border-t border-white/5 relative overflow-hidden">
+        <!-- Decoración de fondo dorada -->
+        <div class="absolute top-0 right-0 -mr-40 -mt-40 w-96 h-96 bg-soul-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 -ml-40 -mb-40 w-96 h-96 bg-soul-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                
+                <!-- Info de Contacto -->
+                <div class="flex flex-col justify-center">
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6">Booking & Contacto</h2>
+                    <p class="text-gray-400 mb-10 text-lg font-light">
+                        ¿Interesado en llevar la magia de <span class="text-white font-medium">Moll Noir</span> a tu evento, sala o festival? Contáctanos para consultar disponibilidad y presupuestos adaptados a tus necesidades.
+                    </p>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 w-12 h-12 bg-black rounded-full flex items-center justify-center text-soul-500 border border-soul-500/30">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-gray-500 uppercase tracking-wider">Email Directo</p>
+                                <a href="mailto:booking@mollnoir.com" class="text-lg text-white hover:text-soul-500 transition-colors">booking@mollnoir.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 w-12 h-12 bg-black rounded-full flex items-center justify-center text-soul-500 border border-soul-500/30">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-gray-500 uppercase tracking-wider">Management</p>
+                                <a href="tel:+34600000000" class="text-lg text-white hover:text-soul-500 transition-colors">+34 600 000 000</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulario -->
+                <div class="bg-black/60 p-8 md:p-10 rounded-2xl border border-white/10 backdrop-blur-md shadow-2xl">
+                    <form action="#" method="POST" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-400 mb-2">Nombre / Empresa</label>
+                            <input type="text" name="name" id="name" class="block w-full bg-neutral-900/50 border border-neutral-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-soul-500 focus:border-soul-500 transition-all" placeholder="Ej. Juan Pérez">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-400 mb-2">Email de Contacto</label>
+                            <input type="email" name="email" id="email" class="block w-full bg-neutral-900/50 border border-neutral-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-soul-500 focus:border-soul-500 transition-all" placeholder="juan@ejemplo.com">
+                        </div>
+
+                        <div>
+                            <label for="tipo_evento" class="block text-sm font-medium text-gray-400 mb-2">Tipo de Evento</label>
+                            <select id="tipo_evento" name="tipo_evento" class="block w-full bg-neutral-900/50 border border-neutral-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-soul-500 focus:border-soul-500 transition-all appearance-none">
+                                <option>Festival</option>
+                                <option>Sala de Conciertos</option>
+                                <option>Evento Corporativo / Privado</option>
+                                <option>Boda</option>
+                                <option>Otro</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-400 mb-2">Mensaje (Fecha, Localización, etc.)</label>
+                            <textarea id="message" name="message" rows="4" class="block w-full bg-neutral-900/50 border border-neutral-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-soul-500 focus:border-soul-500 transition-all" placeholder="Detalles del evento..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full flex justify-center py-4 px-4 rounded-lg shadow-lg text-lg font-bold text-black bg-soul-500 hover:bg-soul-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-soul-500 focus:ring-offset-black transition-all">
+                            Enviar Solicitud
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="font-serif text-2xl font-bold text-white uppercase tracking-wider">Moll <span class="text-soul-500">Noir</span></span>
+            </div>
+            
+            <p class="text-gray-500 text-sm">
+                &copy; 2026 Moll Noir. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts (Interacción de UI + Lector de TXT) -->
+    <script>
+        // 1. Script para el Menú Móvil y Navbar
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const navbar = document.getElementById('navbar');
+
+        btn.addEventListener('click', () => { menu.classList.toggle('hidden'); });
+        mobileLinks.forEach(link => { link.addEventListener('click', () => { menu.classList.add('hidden'); }); });
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-black/95', 'shadow-lg');
+                navbar.classList.remove('bg-black/90');
+            } else {
+                navbar.classList.add('bg-black/90');
+                navbar.classList.remove('bg-black/95', 'shadow-lg');
+            }
+        });
+
+        // 2. Lector dinámico del archivo tour.txt para la tabla de conciertos
+        document.addEventListener('DOMContentLoaded', () => {
+            const tbody = document.getElementById('tour-dates-body');
+            
+            // Intenta leer el fichero tour.txt de la misma carpeta
+            fetch('tour.txt')
+                .then(response => {
+                    if (!response.ok) throw new Error('El archivo no existe todavía');
+                    return response.text();
+                })
+                .then(text => {
+                    // Separar por lineas y quitar las vacías
+                    const lines = text.split('\n').filter(line => line.trim() !== '');
+                    
+                    if (lines.length === 0) throw new Error('Archivo vacío');
+
+                    lines.forEach(line => {
+                        // El formato esperado es: 15/10/2026 | Sala Clamores | Madrid
+                        const parts = line.split('|').map(s => s.trim());
+                        
+                        if (parts.length >= 3) {
+                            const date = parts[0];
+                            const venue = parts[1];
+                            const city = parts[2];
+
+                            const tr = document.createElement('tr');
+                            tr.className = 'hover:bg-white/5 transition-colors';
+                            
+                            // Estructura de la fila de la tabla
+                            tr.innerHTML = `
+                                <td class="py-4 px-6 text-soul-500 font-medium whitespace-nowrap">${date}</td>
+                                <td class="py-4 px-6 text-white font-medium">${venue}</td>
+                                <td class="py-4 px-6 text-gray-400">${city}</td>
+                                <td class="py-4 px-6 text-right">
+                                    <a href="#contratacion" class="inline-block px-4 py-2 border border-soul-500/50 text-soul-500 rounded hover:bg-soul-500 hover:text-black transition-colors text-sm font-bold">
+                                        Info / Tickets
+                                    </a>
+                                </td>
+                            `;
+                            tbody.appendChild(tr);
+                        }
+                    });
+                })
+                .catch(error => {
+                    // Si falla (porque estamos en vista previa o no has subido el TXT todavía), 
+                    // creamos una fila de aviso.
+                    tbody.innerHTML = `
+                        <tr>
+                            <td colspan="4" class="py-12 px-6 text-center text-gray-500 italic border-b border-neutral-800">
+                                <p class="mb-2 text-soul-500">No se encontraron fechas (o no se pudo leer el archivo).</p>
+                                <p class="text-sm">Para añadir fechas, crea un archivo llamado <strong>tour.txt</strong> en tu servidor con este formato por línea:<br>
+                                <code>DD/MM/YYYY | Nombre de la Sala | Ciudad</code></p>
+                            </td>
+                        </tr>
+                    `;
+                });
+        });
+    </script>
 </body>
 </html>
