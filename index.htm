@@ -484,10 +484,11 @@
                         // El formato esperado es: 15/10/2026 | Sala Clamores | Madrid
                         const parts = line.split('|').map(s => s.trim());
                         
-                        if (parts.length >= 3) {
+                        if (parts.length >= 4) {
                             const date = parts[0];
                             const venue = parts[1];
                             const city = parts[2];
+                            const link = parts[3];
 
                             const tr = document.createElement('tr');
                             tr.className = 'hover:bg-white/5 transition-colors';
@@ -498,7 +499,7 @@
                                 <td class="py-4 px-6 text-white font-medium">${venue}</td>
                                 <td class="py-4 px-6 text-gray-400">${city}</td>
                                 <td class="py-4 px-6 text-right">
-                                    <a href="#contratacion" class="inline-block px-4 py-2 border border-soul-500/50 text-soul-500 rounded hover:bg-soul-500 hover:text-black transition-colors text-sm font-bold">
+                                    <a href="${link}" target="_new" class="inline-block px-4 py-2 border border-soul-500/50 text-soul-500 rounded hover:bg-soul-500 hover:text-black transition-colors text-sm font-bold">
                                         Info / Tickets
                                     </a>
                                 </td>
