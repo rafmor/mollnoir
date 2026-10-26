@@ -427,7 +427,7 @@
 // Script para cargar fechas desde tour.txt
         document.addEventListener('DOMContentLoaded', () => {
             // Buscamos el archivo tour.txt en la misma carpeta
-            fetch('tour.txt')
+            fetch('static/tour.txt')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('No se pudo cargar el archivo tour.txt');
