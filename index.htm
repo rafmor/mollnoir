@@ -469,7 +469,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const tbody = document.getElementById('tour-dates-body');
             
-            fetch('tour.txt')
+            fetch('static/tour.txt')
                 .then(response => {
                     if (!response.ok) throw new Error('El archivo no existe todavía');
                     return response.text();
@@ -509,9 +509,7 @@
                     tbody.innerHTML = `
                         <tr>
                             <td colspan="4" class="py-12 px-6 text-center text-gray-500 italic">
-                                <p class="mb-2 text-soul-500 font-medium">No se han podido cargar las fechas de la gira.</p>
-                                <p class="text-sm">Recuerda crear un archivo <strong>tour.txt</strong> en el mismo directorio con el formato:<br>
-                                <code class="mt-2 inline-block bg-black/50 p-2 rounded border border-neutral-800 text-gray-300">DD/MM/YYYY | Nombre de la Sala | Ciudad | https://link-entradas.com</code></p>
+                                <p class="mb-2 text-soul-500 font-medium">No hay datos para proximas fechas de la gira.</p>
                             </td>
                         </tr>
                     `;
